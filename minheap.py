@@ -12,13 +12,13 @@ class MinHeap:
         self.up_heap()
 
     def peek(self):
-        '''get max element'''
+        '''get min element'''
         if self.size == 0:
             raise Exception('Heap is empty!')
         return self.heap[0]
 
     def poll(self):
-        '''get max element and remove it'''
+        '''get min element and remove it'''
         if self.size == 0:
             raise Exception('Heap is empty!')
 
