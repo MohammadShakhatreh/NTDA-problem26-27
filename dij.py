@@ -39,18 +39,19 @@ src = mapping[src]
 
 def print_so_far():
     for i in range(N):
-        offset = 4 if costs[i] == 10000 else costs[i]//10+2
+        offset = 4 if costs[i] == 10000 else costs[i]//10+4
         print('{0:<{1}}'.format(rmapping[i], offset), end='')
     print()
 
-    for cost in costs:
-        if cost == 10000:
+    for i in range(N):
+        if costs[i] == 10000:
             print('inf', end=' ')
         else:
-            print(cost, end = ' ')
+            print('{},{}'.format(costs[i], rmapping[parent[i]]), end = ' ')
     print()
 
 # dijkstra part
+parent  = [ i for i in range(N) ]
 visited = [ False for _ in range(N) ]
 costs   = [ 10000 for _ in range(N) ]
 heap    = MinHeap() # for maintaining min cost element
@@ -68,6 +69,7 @@ while not heap.empty():
         if not visited[v] and costs[v] > costs[cur] + w:
             costs[v] = costs[cur] + w
             heap.insert((costs[v], v))
+            parent[v] = cur
 
     NN += rmapping[cur]
     print(NN)
