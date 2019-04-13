@@ -1,5 +1,3 @@
-from array import array
-
 class MinHeap:
 
     def __init__(self):
